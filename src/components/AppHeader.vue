@@ -2,10 +2,10 @@
 export default {
     data(){
         return {
+            activeOption: 7,
             HeaderList: [
         {
             title: "Home",
-            showMore: false,
             List: [
                 "MaxCoach Education",
                 "Course Portal",
@@ -31,7 +31,6 @@ export default {
         },
         {
             title: "Pages",
-            showMore: false,
             List: [
                 "Start Here",
                 "Success Story",
@@ -48,7 +47,6 @@ export default {
         },
         {
             title: "Courses",
-            showMore: false,
             List: [
                 "Courses Grid 01",
                 "Courses Grid 02",
@@ -62,7 +60,6 @@ export default {
         },
         {
             title: "Features",
-            showMore: false,
             List: [
                 "Events",
                 "Zoom Meetings"
@@ -70,7 +67,6 @@ export default {
         },
         {
             title: "Blog",
-            showMore: false,
             List: [
                 "Blog Grid",
                 "Blog Masonary",
@@ -80,7 +76,6 @@ export default {
         },
         {
             title: "Shop",
-            showMore: true,
             List: [
                 "Shop Left Sidebar",
                 "Shop Right Sidebar",
@@ -93,16 +88,8 @@ export default {
         }
     },
     methods: {
-        showOptions(flag){
-            if(flag == false){
-                flag = true
-                console.log(flag)
-            }
-            else{
-                flag = false
-                console.log(flag)
-            }
-        }
+
+
     }
 }
 </script>
@@ -115,11 +102,11 @@ export default {
             <div class="navbar">
                 <ul class="main-list">
                     <li v-for="(name, index) in this.HeaderList" class="main-item">
-                        <div class="option" @click="showOptions(name.showMore)">
+                        <div class="option">
                         {{ name.title }} V
                         </div>
-                        <ul v-if="name.showMore">
-                            <li v-for="(item, index) in name.List">{{ item }}</li>
+                        <ul>
+                            <li v-for="(item, num) in name.List">{{ item }}</li>
                         </ul>
                     </li>
                     <div class="icon">I-Carr</div>
@@ -134,14 +121,18 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
+    .header-cont{
+        background-color: #1f1f52;
+        height: 50px;
+    }
     .row {
+        height: 100%;
         width: 70%;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: white;
-        background-color: rgb(75, 3, 134);
         .navbar{
             width: 70%;
             .main-list{
@@ -150,14 +141,28 @@ export default {
                 list-style-type: none;
                 .main-item{
                     position: relative;
+                    &:hover ul{
+                        top: 20px;
+                        opacity: 1;
+                    }
                 }
                 ul{
                     list-style-type: none;
                     position: absolute;
                     right: -25%;
+                    top: 30px;
                     color: black;
-                    background-color: white;
-                    border: 1px solid black;
+                    background-size: cover;
+                    opacity: 0;
+                    max-height: 250px;
+                    transition: all 0.5s;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    li{
+                        padding: 5px;
+                        background-color: white;
+                    }
                 }
             }
         }
