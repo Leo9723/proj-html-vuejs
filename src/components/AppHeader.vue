@@ -6,6 +6,7 @@ export default {
             HeaderList: [
         {
             title: "Home",
+            url:"https://maxcoach.thememove.com/",
             List: [
                 "MaxCoach Education",
                 "Course Portal",
@@ -24,13 +25,12 @@ export default {
                 "Yoga",
                 "Photography",
                 "Personal Finance",
-                "Sales Coaching",
-                "Mental Teraphy"
-
+                "Sales Coaching"
             ]
         },
         {
             title: "Pages",
+            url:"https://maxcoach.thememove.com/",
             List: [
                 "Start Here",
                 "Success Story",
@@ -47,6 +47,7 @@ export default {
         },
         {
             title: "Courses",
+            url:"https://maxcoach.thememove.com/main/courses/",
             List: [
                 "Courses Grid 01",
                 "Courses Grid 02",
@@ -60,6 +61,7 @@ export default {
         },
         {
             title: "Features",
+            url:"https://maxcoach.thememove.com/main/courses/",
             List: [
                 "Events",
                 "Zoom Meetings"
@@ -67,6 +69,7 @@ export default {
         },
         {
             title: "Blog",
+            url:"https://maxcoach.thememove.com/main/blog/",
             List: [
                 "Blog Grid",
                 "Blog Masonary",
@@ -76,6 +79,7 @@ export default {
         },
         {
             title: "Shop",
+            url:"https://maxcoach.thememove.com/main/shop/",
             List: [
                 "Shop Left Sidebar",
                 "Shop Right Sidebar",
@@ -103,10 +107,10 @@ export default {
                 <ul class="main-list">
                     <li v-for="(name, index) in this.HeaderList" class="main-item">
                         <div class="option">
-                        {{ name.title }} V
+                        <a :href="name.url">{{ name.title }} V</a>
                         </div>
-                        <ul>
-                            <li v-for="(item, num) in name.List">{{ item }}</li>
+                        <ul :class="(name.List.length > 15) ? 'split-ul-15' : (name.List.length > 7) ? 'split-ul-10' : ''">
+                            <li v-for="(item, num) in name.List" :class="(name.List.length > 7) ? 'split-li-15' : ''">{{ item }}</li>
                         </ul>
                     </li>
                     <div class="icon">I-Carr</div>
@@ -141,10 +145,30 @@ export default {
                 list-style-type: none;
                 .main-item{
                     position: relative;
+                    a{
+                     text-decoration: none;
+                     color: white;
+                     }
                     &:hover ul{
                         top: 20px;
                         opacity: 1;
                     }
+                }
+                .split-ul-15 {
+                    height: 300px;
+                    width: 450px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    right: -150%;
+                }
+                .split-ul-10{
+                    height: 200px;
+                    width: 450px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    right: -150%;
                 }
                 ul{
                     list-style-type: none;
@@ -152,16 +176,19 @@ export default {
                     right: -25%;
                     top: 30px;
                     color: black;
-                    background-size: cover;
                     opacity: 0;
-                    max-height: 250px;
                     transition: all 0.5s;
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
+                    z-index: 2;
+                    background-color: white;
+                    border-radius: 15px;
+                    .split-li-15 {
+                        height: 50px;
+                        width: 150px;
+                    }
                     li{
                         padding: 5px;
-                        background-color: white;
+                        height: 50px;
+                        width: 100px;
                     }
                 }
             }
