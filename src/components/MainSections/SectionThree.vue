@@ -59,6 +59,12 @@ export default {
 <template lang="">
     <div>
         <div class="main-cont">
+            <div class="intro">
+                CHOOSE A COURSE TO GET STARTED
+            </div>
+            <h2 class="title">
+                Latest Featured <span>Courses</span>
+            </h2>
             <div class="cards">
                 <div class="card" v-for="(card, index) in cards">
                     <img :src="`/public/images/` + card.img" alt="">
@@ -83,10 +89,35 @@ export default {
                     </div>
                 </div>
             </div>
+            <button>View all courses =></button>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
+.main-cont{
+    text-align: center;
+}
+.intro{
+    font-size: small;
+    color: rgb(139, 139, 139);
+}
+h2{
+    font-size: 40px;
+    margin-bottom: 50px;
+    span{
+        font-weight: lighter;
+        color: rgb(52, 224, 167);
+    }
+}
+button{
+    margin-top: 50px;
+    padding: 15px 30px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(74, 209, 157);
+    border: none;
+    border-radius: 10px;
+}
 .cards{
     display: flex;
     flex-direction: column;
@@ -94,6 +125,7 @@ export default {
     height: 600px;
     width: 80%;
     margin: 0 auto;
+    text-align: start;
 }
     .card{
         display: flex;
@@ -115,6 +147,9 @@ export default {
                 font-weight: bold;
                 color: rgb(52, 224, 167);
                 margin-bottom: 15px;
+                span{
+                    font-size: small;
+                }
             }
             .title{
                 font-weight: bold;
