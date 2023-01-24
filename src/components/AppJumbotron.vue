@@ -67,11 +67,13 @@ export default {
                 justify-content: space-between;
                 .right-person-img{
                     position: relative;
-                    top: 250px;
+                    top: 320px;
+                    height: 300px;
                 }
                 .left-person-img{
                     position: relative;
-                    top: 90px;
+                    top: 200px;
+                    height: 300px;
                 }
                 .video-cont{
                         background-color: white;
