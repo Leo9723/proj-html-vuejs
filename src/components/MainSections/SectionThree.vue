@@ -117,7 +117,8 @@ button{
     background-color: rgb(74, 209, 157);
     border: none;
     border-radius: 10px;
-    margin-bottom: 50px;}
+    margin-bottom: 50px;
+}
 .cards{
     display: flex;
     flex-direction: column;
