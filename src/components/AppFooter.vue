@@ -8,10 +8,10 @@ export default {
                     number: "+1(305)547-9909 (9am - spm EST, Monday - Friday)",
                     mail: "support@maxcoach.com",
                     socialIco: [
-                        "Ico1",
-                        "Ico2",
-                        "Ico3",
-                        "Ico4"
+                        "fa-brands fa-square-facebook",
+                        "fa-brands fa-twitter",
+                        "fa-brands fa-instagram",
+                        "fa-brands fa-linkedin"
                     ]
                 }
             ],
@@ -42,6 +42,7 @@ export default {
 }
 </script>
 <template lang="">
+    <div class="all">
     <div class="container">
         <div class="info" v-for="info in infos">
             <h4>Address</h4>
@@ -55,9 +56,7 @@ export default {
                 {{ info.mail }}
             </div>
             <div class="icons">
-                <i :class="ico" v-for="ico in info.socialIco">
-                    ICONA
-                </i>
+                <i :class="ico" v-for="ico in info.socialIco"></i>
             </div>
         </div>
         <div class="more">
@@ -76,8 +75,14 @@ export default {
         <div class="copyright">
             © 2020 Maxcoach. All Rights Reserved
         </div>
+    </div>
 </template>
 <style lang="scss" scoped>
+@use './styles/partials/variables' as *;
+    .all{
+        background-color: $bkg-main-secondary;
+        padding-top: 50px;
+    }
     .container {
         width: 80%;
         margin: 0 auto;
@@ -85,10 +90,18 @@ export default {
         justify-content: space-between;
         .info{
             line-height: 2;
+            color: $secondary-text;
+            h4{
+                color: $primary-text;
+            }
+            .mail{
+                margin-bottom: 15px;
+            }
             .icons{
                 display: flex;
                 i{
                     margin-right: 20px;
+                    font-size: x-large;
                 }
             }
         }
@@ -106,7 +119,7 @@ export default {
                         display: flex;
                         flex-direction: column;
                         flex-wrap: wrap;
-                        color: gray;
+                        color: $secondary-text;
                         font-size: small;
                     }
 
@@ -117,8 +130,8 @@ export default {
     }
     .copyright{
             font-size: small;
-            color: gray;
-            margin: 50px 0px;
+            color: $secondary-text;
+            padding: 50px 0px;
             text-align: center;
         }
 </style>

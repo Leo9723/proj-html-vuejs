@@ -89,20 +89,30 @@ export default {
             ]
         },
     ],
+
+    mouseover: false
+        }
+    },
+    methods: {
+        activeitemover(){
+            this.mouseover = true
+        },
+        activeitemout(){
+            this.mouseover = false
         }
     }
 }
 </script>
 <template lang="">
-    <div class="header-cont">
+    <div class="secondary-header-cont">
         <div class="row">
             <div class="logo">
-                <img src="/public/images/light-logo.png" alt="">
+                <img src="/public/images/dark-logo.png" alt="">
             </div>
             <div class="navbar">
                 <ul class="main-list">
                     <li v-for="(name, index) in this.HeaderList" class="main-item">
-                        <div class="option">
+                        <div class="option" @mouseover="activeitemover">
                         <a :href="name.url">{{ name.title }} <i class="fa-solid fa-chevron-down"></i></a>
                         </div>
                         <ul :class="(name.List.length > 15) ? 'split-ul-15' : (name.List.length > 7) ? 'split-ul-10' : ''">
@@ -130,8 +140,8 @@ export default {
         width: 50%;
     }
 }
-    .header-cont{
-        background-color: $bkg-header;
+    .secondary-header-cont{
+        background-color: $bkg-main-primary;
     }
     .row {
         height: 100%;
@@ -140,7 +150,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: $bkg-main-primary;
+        color: $primary-text;
         .navbar{
             width: 70%;
             .main-list{
@@ -156,7 +166,7 @@ export default {
                     }
                     a{
                      text-decoration: none;
-                     color: $bkg-main-primary;
+                     color: $primary-text;
                      }
                      &:hover{
                         border-bottom: 3px solid $bkg-main-primary;

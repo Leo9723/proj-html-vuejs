@@ -20,7 +20,7 @@ export default {
             <img src="/public/images/home-6-hero-left-person-244x300.png" alt="" class="left-person-img">
             <div class="video-cont">
                 <div class="poster">
-                <img src="/public/images/home-6-hero-poster-final.jpg" alt="">
+                    <img src="/public/images/home-6-hero-poster-final.jpg" alt="">
                 </div>
                 <img src="/public/images/icon-youtube-play.png" alt="" class="yt">
             </div>
@@ -31,8 +31,10 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
+@use './styles/partials/mixins' as *;
+@use './styles/partials/variables' as *;
 .all{
-    background-color: #1f1f52;
+    background-color: $bkg-header;
     color: white;
     .jumbo-cont{
         display: flex;
@@ -49,12 +51,11 @@ export default {
         }
         button {
             padding: 15px 30px;
-            color: white;
-            font-weight: bold;
-            background-color: rgb(74, 209, 157);
-            border: none;
-            border-radius: 10px;
+            @include my-button;
             box-shadow: 0px 0px 30px 5px rgba(63, 63, 63, 0.911);
+            &:hover{
+                @include my-hover-button-1;
+            }
         }
         .wave-cont{
             width: 100%;

@@ -21,13 +21,19 @@ export default {
                     date: "May 15, 2020",
                     views: "397"
                 }
-            ]
+            ],
+            scroll: false
         }
-    }
+    },
+    methods: {
+        activescroll(){
+            this.scroll = true
+        }
+    },
 }
 </script>
 <template lang="">
-    <div>
+    <div @mouseover="activescroll" :class="(this.scroll) ? 'all mouse-over' : 'all'">
         <div class="main-cont">
             <div class="intestation">
                 <div class="intro">
@@ -37,17 +43,19 @@ export default {
             </div>
             <div class="cards">
                 <div class="card"  v-for="card in cards">
-                    <img :src="`/public/images/` + card.img" alt="">
+                    <div class="img">
+                        <img :src="`/public/images/` + card.img" alt="">
+                    </div>
                     <div class="intro">
                         ARTIST
                     </div>
                     <h3>{{ card.title }}</h3>
                     <div class="card-info">
                     <div class="date">
-                        ico {{ card.date }}
+                        <i class="fa-regular fa-calendar"></i> {{ card.date }}
                     </div>
                     <div class="views">
-                        ico {{ card.views }}
+                        <i class="fa-regular fa-eye"></i> {{ card.views }}
                     </div>
                     </div>
                 </div>
@@ -56,6 +64,19 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
+@use '../styles/partials/variables' as *;
+.all.mouse-over {
+        transition: all 2s;
+        opacity: 1;
+        top: 0px;
+    }
+    .all{
+        background-color: $bkg-main-secondary;
+        padding: 50px 0px;
+        opacity: 0;
+        position: relative;
+        top: 50px;
+    }
     .main-cont{
         width: 80%;
         margin: 0 auto;
@@ -64,14 +85,14 @@ export default {
         }
         .intro{
             font-size: small;
-            color: gray;
+            color: $secondary-text;
         }
         h2{
             font-size: 40px;
-            margin-top: 20px;
+            margin: 20px 0px;
             span{
                 font-weight: lighter;
-                color: rgb(88, 241, 183);
+                color: $extra-color;
             }
         }
         .cards{
@@ -79,10 +100,20 @@ export default {
             justify-content: space-between;
             .card{
                 width: calc(90% / 3);
+                .img{
+                    overflow: hidden;
+                    width: 368px;
+                    height: 249px;
+                    border-radius: 10px;
+                }
                 img{
                     width: 100%;
                     border-radius: 10px;
                     margin-bottom: 15px;
+                    transition: all 1.5s;
+                    &:hover{
+                        transform: scale(1.2);
+                    }
                 }
                 h3{
                     margin: 15px 0px;
@@ -90,7 +121,7 @@ export default {
                 .card-info{
                     display: flex;
                     font-size: small;
-                    color: gray;
+                    color: $secondary-text;
                     .views{
                         margin-left: 20px;
                     }

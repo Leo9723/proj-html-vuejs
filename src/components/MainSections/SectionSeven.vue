@@ -11,6 +11,8 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
+@use '../styles/partials/mixins' as *;
+@use '../styles/partials/variables' as *;
 .main-cont{
     text-align: center;
     margin-top: 100px;
@@ -18,7 +20,7 @@ export default {
         font-size: 20px;
         span{
             font-weight: lighter;
-            color: rgb(66, 218, 197);
+            color: $extra-color;
         }
     }
     h2{
@@ -26,13 +28,11 @@ export default {
     }
     button{
         margin-top: 50px;
-        padding: 15px 30px;
-        color: white;
-        font-weight: bold;
-        background-color: rgb(74, 209, 157);
-        border: none;
-        border-radius: 10px;
+        @include my-button;
         margin-bottom: 50px;
+        &:hover{
+            @include my-hover-button-2
+        }
     }
 }
 </style>

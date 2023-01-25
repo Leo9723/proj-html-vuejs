@@ -29,14 +29,20 @@ export default {
                 "Change the tutor and make arrangements",
                 "Porticipate in events to join others",
                 "Get the desired certificate delivered at house"
-            ]
+            ],
+            scroll: false
         }
-    }
+    },
+        methods: {
+        activescroll(){
+            this.scroll = true
+        }
+    },
 }
 </script>
 <template lang="">
     <div>
-        <div class="main-cont">
+        <div @mouseover="activescroll" :class="(this.scroll) ? 'main-cont mouse-over' : 'main-cont'">
             <div class="cards-cont">
                 <div v-for="(card, index) in cards" :class="(index > 1) ? 'cards down' : 'cards'">
                     <div :class="(index == 1) ? 'card reverse' : (index == 3) ? 'card reverse' : 'card'">
@@ -54,7 +60,7 @@ export default {
                 </div>
                 <h2>Service We <span>Can Provide</span> For My Clients.</h2>
                 <div class="check"  v-for="(item, num) in Check">
-                    V {{ item }}
+                    <i class="fa-solid fa-check"></i> {{ item }}
                 </div>
                 <button>
                     Get started for free
@@ -65,11 +71,21 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
+@use '../styles/partials/mixins' as *;
+@use '../styles/partials/variables' as *;
+    .main-cont.mouse-over {
+        transition: all 2s;
+        opacity: 1;
+        top: 0px;
+    }
     .main-cont{
         width: 80%;
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
+        opacity: 0;
+        position: relative;
+        top: 50px;
         .cards-cont{
             width: 50%;
             display: flex;
@@ -98,7 +114,7 @@ export default {
                         margin: 15px;
                         font-size: small;
                         line-height: 1.5;
-                        color: rgb(53, 53, 53);
+                        color: $secondary-text;
                     }
                     img {
                         width: 200px;
@@ -124,21 +140,22 @@ export default {
                 font-size: 35px;
                 margin-bottom: 40px;
                 span{
-                    color: rgb(52, 224, 167);
+                    color: $extra-color;
                     font-weight: lighter;
                 }
             }
             .check{
                 line-height: 2;
+                i{
+                    color: $extra-color;
+                }
             }
             button{
                 margin-top: 30px;
-                padding: 15px 30px;
-                color: white;
-                font-weight: bold;
-                background-color: rgb(74, 209, 157);
-                border: none;
-                border-radius: 10px;
+                @include my-button;
+                &:hover{
+                    @include my-hover-button-2;
+                }
             }
             
         }

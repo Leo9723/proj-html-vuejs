@@ -51,14 +51,20 @@ export default {
                     studentsNumber: "67",
                     free: false
                 }
-            ]
+            ],
+            scroll: false
         }
-    }
+    },
+    methods: {
+        activescroll(){
+            this.scroll = true
+        }
+    },
 }
 </script>
 <template lang="">
     <div>
-        <div class="main-cont">
+        <div @mouseover="activescroll" :class="(this.scroll) ? 'main-cont mouse-over' : 'main-cont'">
             <div class="intro">
                 CHOOSE A COURSE TO GET STARTED
             </div>
@@ -80,50 +86,60 @@ export default {
                         </div>
                         <div class="statistics">
                             <div class="lessons">
-                                ico {{ card.lessonsNumber }} Lessons
+                                <i class="fa-regular fa-file-lines"></i> {{ card.lessonsNumber }} Lessons
                             </div>
                             <div class="students">
-                                ico {{ card.studentsNumber }} Students
+                                <i class="fa-regular fa-user"></i> {{ card.studentsNumber }} Students
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button>View all courses =></button>
+            <button>View all courses <i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
+@use '../styles/partials/mixins' as *;
+@use '../styles/partials/variables' as *;
+.main-cont.mouse-over {
+        transition: all 2s;
+        opacity: 1;
+        top: 0px;
+    }
 .main-cont{
     text-align: center;
+    background-color: $bkg-main-secondary;
+    padding-top: 50px;
+    opacity: 0;
+    position: relative;
+    top: 50px;
 }
 .intro{
     font-size: small;
-    color: rgb(139, 139, 139);
+    color: $secondary-text;
 }
 h2{
     font-size: 40px;
     margin-bottom: 50px;
     span{
         font-weight: lighter;
-        color: rgb(52, 224, 167);
+        color: $extra-color;
     }
 }
 button{
     margin-top: 50px;
-    padding: 15px 30px;
-    color: white;
-    font-weight: bold;
-    background-color: rgb(74, 209, 157);
-    border: none;
-    border-radius: 10px;
+    @include my-button;
     margin-bottom: 50px;
+    &:hover{
+        @include my-hover-button-2
+    }
 }
 .cards{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 600px;
+    height: 700px;
     width: 80%;
     margin: 0 auto;
     text-align: start;
@@ -132,8 +148,16 @@ button{
         display: flex;
         height: 180px;
         margin-bottom: 20px;
+        margin: 20px;
+        padding: 10px;
+        transition: all 0.25s;
+        border-radius: 10px;
+        &:hover{
+            background-color: $bkg-main-primary;
+            box-shadow: 0px 0px 30px 5px rgba(114, 114, 114, 0.384);
+        }
         img{
-            width: 180px;
+            width: 160px;
             aspect-ratio: 1 / 1;
             object-fit: cover;
             border-radius: 100%;
@@ -146,7 +170,7 @@ button{
             .money{
                 font-size: large;
                 font-weight: bold;
-                color: rgb(52, 224, 167);
+                color: $extra-color;
                 margin-bottom: 15px;
                 span{
                     font-size: small;
@@ -159,7 +183,7 @@ button{
             .statistics{
                 display: flex;
                 margin-top: 30px;
-                color: rgb(139, 139, 139);
+                color: $secondary-text;
                 .lessons{
                     margin-right: 40px;
                 }
