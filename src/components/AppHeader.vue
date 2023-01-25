@@ -166,7 +166,6 @@ export default {
                         top: 40px;
                         visibility: visible;
                         opacity: 1;
-                        border: 1px solid $bkg-main-secondary;
                         box-shadow: 0px 0px 30px 5px rgba(114, 114, 114, 0.384);
                     }
                     ul{
@@ -199,7 +198,7 @@ export default {
                     opacity: 0;
                     transition: all 0.5s;
                     background-color: $bkg-main-secondary;
-                    border-radius: 15px;
+                    border-bottom: 7px solid $extra-color;
                     .split-li-15 {
                         height: 50px;
                         width: 150px;

@@ -19,21 +19,51 @@ export default {
                 {
                     title: "Explore",
                     items: [
-                        "Start here",
-                        "Blog",
-                        "About us",
-                        "Success story",
-                        "Courses",
-                        "Contact us"
+                        {
+                            title: "Start here",
+                            url: "https://maxcoach.thememove.com/main/start-here/"
+                        },
+                        {
+                            title: "Blog",
+                            url: "https://maxcoach.thememove.com/main/blog/"
+                        },
+                        {
+                            title: "About us",
+                            url: "https://maxcoach.thememove.com/main/about-us-01/"
+                        },
+                        {
+                            title: "Success story",
+                            url: "https://maxcoach.thememove.com/main/success-story/"
+                        },
+                        {
+                            title: "Courses",
+                            url: "https://maxcoach.thememove.com/main/courses/"
+                        },
+                        {
+                            title: "Contact us",
+                            url: "https://maxcoach.thememove.com/main/contact-us/"
+                        }
                     ]
                 },
                 {
                     title: "Information",
                     items: [
-                        "Membership",
-                        "Purchase guide",
-                        "Privacy policy",
-                        "Terms of services"
+                        {
+                            title: "Membership",
+                            url: "https://maxcoach.thememove.com/main/wp-login.php?redirect_to=https%3A%2F%2Fmaxcoach.thememove.com%2Fmain%2Fmembership-account%2F"
+                        },
+                        {
+                            title: "Purchase guide",
+                            url: "https://maxcoach.thememove.com/main/purchase-guide/"
+                        },
+                        {
+                            title: "Privacy policy",
+                            url: "https://maxcoach.thememove.com/main/privacy-policy/"
+                        },
+                        {
+                            title: "Terms of services",
+                            url: "https://maxcoach.thememove.com/main/terms-of-service/"
+                        }
                     ]
                 },
             ]
@@ -65,7 +95,7 @@ export default {
                     <h4>{{ list.title }}</h4>
                     <ul>
                         <li v-for="item in list.items">
-                            {{ item }}
+                            <a :href="item.url">{{ item.title }}</a>
                         </li>
                     </ul>
                 </li>
@@ -102,6 +132,11 @@ export default {
                 i{
                     margin-right: 20px;
                     font-size: x-large;
+                    transition: all 0.15s;
+                    cursor: pointer;
+                    &:hover {
+                            color: $extra-color;
+                        }
                 }
             }
         }
@@ -121,6 +156,15 @@ export default {
                         flex-wrap: wrap;
                         color: $secondary-text;
                         font-size: small;
+                        li{
+                            a{
+                                text-decoration: none;
+                                color: $secondary-text;
+                                &:hover {
+                                color: $extra-color;
+                            }
+                        }
+                        }
                     }
 
                 }

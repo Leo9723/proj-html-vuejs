@@ -5,7 +5,7 @@ export default {
 </script>
 <template lang="">
     <div class="all">
-    <div class="jumbo-cont">
+    <div class="jumbo-cont" id="jumbo-id">
         <h1>
             Learn At Your Own Place!
         </h1>
