@@ -88,17 +88,7 @@ export default {
                 "Single Product"
             ]
         },
-    ],
-
-    mouseover: false
-        }
-    },
-    methods: {
-        activeitemover(){
-            this.mouseover = true
-        },
-        activeitemout(){
-            this.mouseover = false
+    ]
         }
     }
 }
@@ -112,28 +102,50 @@ export default {
             <div class="navbar">
                 <ul class="main-list">
                     <li v-for="(name, index) in this.HeaderList" class="main-item">
-                        <div class="option" @mouseover="activeitemover">
+                        <div class="option">
                         <a :href="name.url">{{ name.title }} <i class="fa-solid fa-chevron-down"></i></a>
                         </div>
                         <ul :class="(name.List.length > 15) ? 'split-ul-15' : (name.List.length > 7) ? 'split-ul-10' : ''">
                             <li v-for="(item, num) in name.List" :class="(name.List.length > 7) ? 'split-li-15' : ''">{{ item }}</li>
                         </ul>
                     </li>
-                    <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                    <div class="icon"><i class="fa-solid fa-user"></i></div>
+                    <div class="icon"><a href="https://maxcoach.thememove.com/main/cart/"><i class="fa-solid fa-cart-shopping"></i></a></div>
+                    <div class="icon"><a href="https://maxcoach.thememove.com/main/profile/"><i class="fa-solid fa-user"></i></a></div>
                 </ul>
 
             </div>
             <div class="searchbar">
-                <input type="search" name="" id="padding-id" placeholder="search...                   &#xF002;" style="font-family:Arial, FontAwesome">
+                <input type="search" name="" id="padding-id" placeholder="search...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
 @use './styles/partials/variables' as *;
+.icon{
+    a{
+        color: white;
+    }
+}
+.searchbar{
+    display: flex;
+    margin-left: 20px;
+    button{
+        border: none;
+        padding: 5px 10px;
+        border-radius: 0px 5px 5px 0px;
+        background-color: white;
+        color: $extra-color;
+        border: 1px solid $secondary-text;
+        border-left: none;
+    }
+}
 #padding-id{
     padding: 5px 10px;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid $secondary-text;
+    border-right: none;
 }
 .logo{
     img{

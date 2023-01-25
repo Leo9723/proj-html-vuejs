@@ -21,6 +21,7 @@ export default {
 </script>
 <template lang="">
     <div>
+        <!-- divisione del main in piu parti -->
         <SectionOne></SectionOne>
         <SectionTwo></SectionTwo>
         <SectionThree></SectionThree>

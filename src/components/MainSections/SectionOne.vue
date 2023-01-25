@@ -15,9 +15,11 @@ export default {
         }
     },
     methods: {
+        /* valore che mi permette di triggerare la comparsa della sezione */
         activescroll(){
             this.scroll = true
         },
+        /* faccio un timeout che mi incrementa di uno alla volta i valori fino a 100 (cosi che si fermino simultaneamente) */
         updateTimer() {
             if(this.scroll){
                 clearInterval(this.interval)
@@ -33,6 +35,7 @@ export default {
             }
       }
     },
+    /* richiamo le computed e quando il valore raggiunge 100 i numeri appaiono nel loro stato statico */
     computed: {
       myVal() {
             let self = this;
@@ -79,6 +82,7 @@ export default {
 </script>
 <template lang="">
     <div>
+        <!-- traccio l'evento di andare col mouse sulla sezione per farla comparire -->
         <div @mouseover="activescroll" :class="(this.scroll) ? 'main-cont mouse-over' : 'main-cont'">
             <div class="p-cont">
                 <div class="deco">

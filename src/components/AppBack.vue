@@ -4,8 +4,10 @@ export default {
 }
 </script>
 <template lang="">
+    <!-- pulsante per tornare ad inizio pagina -->
     <div class="back-button">
         <button>
+            <!-- linkato al jumbotron -->
             <a href="#jumbo-id">
                 <i class="fa-solid fa-arrow-up"></i>
             </a>

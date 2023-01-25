@@ -24,7 +24,6 @@ export default {
                     url: "https://themeforest.net/item/maxcoach-online-courses-education-wp-theme/26051639"
                 }
             ],
-            navHover: false
         }
     }
 }
@@ -34,6 +33,7 @@ export default {
         <div class="nav-cont">
             <div class="ico" v-for="(icon, index) in icons">
                 <div class="text">{{ icon.text }}</div>
+                <!-- creazione quadrato da roteare per fare freccia -->
                 <div class="square"></div>
                 <a :href="icon.url" :class="(index == 0) ? 'first' : (index == 3) ? 'last' : ''"><i :class="icon.ico"></i></a>
             </div>
