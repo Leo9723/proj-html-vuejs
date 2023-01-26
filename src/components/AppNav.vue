@@ -56,6 +56,12 @@ export default {
             &:hover .text, &:hover .square {
                 opacity: 1;
             }
+            &:hover .text{
+                left: 10px;
+            }
+            &:hover .square{
+                left: 0px;
+            }
             .text{
                 width: 150px;
                 font-size: small;
@@ -66,9 +72,11 @@ export default {
                 border-radius: 5px;
                 opacity: 0;
                 transition: all 0.25s;
+                position: relative;
+                left: 35px;
             }
             a{
-                padding: 10px 15px;
+                padding: 10px 100px 10px 15px;
                 text-decoration: none;
                 color: $primary-text;
                 background-color: white;
@@ -84,7 +92,8 @@ export default {
                 height: 15px;
                 background-color: black;
                 position: relative;
-                right: 4%;
+                left: 25px;
+                right: 0px;
                 rotate: 45deg;
                 border-radius: 5px;
                 opacity: 0;
